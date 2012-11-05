@@ -12,6 +12,7 @@ module Paypal
         if options[:no_shipping]
           params[:REQCONFIRMSHIPPING] = 0
           params[:NOSHIPPING] = 1
+          params[:ALLOWNOTE] = 0
         end
         {
           :solution_type => :SOLUTIONTYPE,
