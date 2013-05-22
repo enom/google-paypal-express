@@ -122,7 +122,8 @@ module Paypal
         params = {
           :REFERENCEID => reference_id,
           :AMT => Util.formatted_amount(amount),
-          :PAYMENTACTION => options[:payment_action] || :Sale
+          :PAYMENTACTION => options[:payment_action] || :Sale,
+          :DESC => options[:description] || "Aisle50 Order"
         }
         if options[:currency_code]
           params[:CURRENCYCODE] = options[:currency_code]
