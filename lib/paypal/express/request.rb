@@ -12,6 +12,7 @@ module Paypal
         if options[:no_shipping]
           params[:REQCONFIRMSHIPPING] = 0
           params[:NOSHIPPING] = 1
+          params[:ALLOWNOTE] = 0
         end
         {
           :solution_type => :SOLUTIONTYPE,
@@ -121,7 +122,8 @@ module Paypal
         params = {
           :REFERENCEID => reference_id,
           :AMT => Util.formatted_amount(amount),
-          :PAYMENTACTION => options[:payment_action] || :Sale
+          :PAYMENTACTION => options[:payment_action] || :Sale,
+          :DESC => options[:description] || "Aisle50 Order"
         }
         if options[:currency_code]
           params[:CURRENCYCODE] = options[:currency_code]
